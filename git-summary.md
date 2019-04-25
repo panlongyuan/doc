@@ -34,14 +34,19 @@
 	git add *.txt
 ```
 
-### 删除暂存区
+### 删除暂存区(stage)
 ```
 	git rm --cached <文件名>	删除暂存区
 ```
-### 提交到版本区
+### 提交到版本区(git仓库Repository)
 ```
 	git commit -m "注释内容"
 ```
+### Tips:避免重复的add再commit
+```
+git commit -am "change the helloworld file."
+```
+> 添加 -a选项，Git会自动帮你将工作目录中所有 "已跟踪"的文件先add到暂存区域，然后再执行commit命令。另外 -am是-a-m的缩写。
 ### 查看版本历史记录
 ```
 	git log   | 参数:--graph 显示ASCII 图形表示的分支合并历史  --oneline 压缩模式,在每个提交的旁边显示经过精简的提交哈希码和提交信息,以一行显示.
@@ -137,7 +142,7 @@ git reset --hard HEAD^ 快速回到上一个版本
 
 ### 关联远程仓库
 - git remote add origin <地址>
-  - origin 表示<地址>的别名, 这个自己可以取名, 如果用了别名, git push也要使用别名
+  - origin 表示<地址>的别名, 这个自己可以取名, 如果用了别名, git push也要使用该别名
   -  如: git push -u <别名> <地址>,  一般都使用origin
 
 ```
@@ -150,7 +155,9 @@ git remote -V
 ```
 - 删除关联
 ```
-git remote rm 名字/别名			// 当输入的地址是错误的, 可以使用这个命令删除
+// 当输入的地址是错误的, 可以使用这个命令删除
+
+git remote rm <名字/别名>	 或者	git remote remove <name>		
 ```
 - 推到远程仓库
 	- git push -u origin master
